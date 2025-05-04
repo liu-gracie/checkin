@@ -1,0 +1,142 @@
+@font-face {
+  font-family: 'Tondu';
+  src: url('./fonts/Tondu.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'New Kansas';
+  src: url('./fonts/NewKansas-Medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'New Kansas';
+  src: url('./fonts/NewKansas-MediumItalic.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'New Kansas';
+  src: url('./fonts/NewKansas-SemiBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'New Kansas';
+  src: url('./fonts/NewKansas-SemiBoldItalic.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* -------------------------------------------------------------- */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'New Kansas', serif;
+  font-weight: normal;
+  font-style: normal;
+  height: 100%;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.title {
+  font-family: 'Tondu', sans-serif;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.phrase {
+  font-family: 'New Kansas', serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.8rem;
+  line-height: 1.4;
+  margin-bottom: 3rem;
+  max-width: 700px;
+}
+
+.login-btn, .submit-btn {
+  font-family: 'New Kansas', serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: inherit;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 14px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.login-btn:hover, .submit-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.note {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  opacity: 0.6;
+  max-width: 300px;
+}
+
+.input-box {
+  width: 100%;
+  max-width: 600px;
+  height: 100px;
+  margin-top: 30px;
+  padding: 15px 20px;
+  font-family: 'New Kansas', serif;
+  font-size: 1.1rem;
+  border-radius: 16px;
+  border: none;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 1.5rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .phrase {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+  }
+
+  .input-box {
+    width: 90%;
+    height: 90px;
+  }
+
+  .login-btn, .submit-btn {
+    padding: 12px 28px;
+    font-size: 1rem;
+  }
+
+  .note {
+    font-size: 0.9rem;
+  }
+}
