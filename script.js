@@ -1,7 +1,7 @@
 const phrases = [
   "happy friday, what are you<br>looking forward to today?",
   "what’s a compliment you want<br>to share to someone today?",
-  "hey you!did you<br>drink water today?"
+  "hey you! did you<br>drink water today?"
 ];
 
 const colorThemes = [

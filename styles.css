@@ -46,84 +46,96 @@ body, html {
 
 .container {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 40px 20px;
-  text-align: center;
+  justify-content: center;
   box-sizing: border-box;
 }
 
-.title {
-  font-family: 'Tondu', sans-serif;
-  font-size: 4rem;
-  margin-bottom: 1rem;
+.manual-spacing {
+  margin: 0;
+  padding: 0;
 }
 
+/* Title */
+.title {
+  font-family: 'Tondu', sans-serif;
+  font-size: 5rem;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0;
+}
+
+/* Phrase */
 .phrase {
   font-family: 'New Kansas', serif;
   font-weight: bold;
   font-style: italic;
-  font-size: 1.8rem;
-  line-height: 1.4;
-  margin-bottom: 3rem;
+  font-size: 1.5rem;
   max-width: 700px;
+  text-align: center;
+  margin-top: 150px; 
+  margin-bottom: 20px;
 }
 
+/* Buttons */
 .login-btn, .submit-btn {
   font-family: 'New Kansas', serif;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: inherit;
-  background-color: rgba(255, 255, 255, 0.2);
   border: none;
-  padding: 14px 40px;
   border-radius: 50px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  padding: 12px 28px;
 }
 
-.login-btn:hover, .submit-btn:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+/* Submit button sizing for ✔ */
+.submit-btn {
+  font-size: 1.5rem;
+  padding: 10px 24px;
+  margin-top: 20px;
 }
 
-.note {
-  margin-top: 1.5rem;
-  font-size: 1rem;
-  opacity: 0.6;
-  max-width: 300px;
-}
-
+/* Input */
 .input-box {
   width: 100%;
   max-width: 600px;
   height: 100px;
-  margin-top: 30px;
-  padding: 15px 20px;
   font-family: 'New Kansas', serif;
   font-size: 1.1rem;
   border-radius: 16px;
   border: none;
   box-sizing: border-box;
   resize: none;
+  margin: 0;
+  padding: 15px 20px;
 }
 
-.submit-btn {
+/* Footer note */
+.note {
+  font-size: 1rem;
+  opacity: 0.5;
+  max-width: 300px;
   margin-top: 20px;
-  padding: 12px 24px;
-  font-size: 1.5rem;
+  text-align: center;
 }
 
-/* Mobile Responsiveness */
+/* Mobile Responsive */
 @media (max-width: 600px) {
   .title {
     font-size: 2.5rem;
   }
 
   .phrase {
-    font-size: 1.4rem;
-    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    margin-top: 100px;
   }
 
   .input-box {
@@ -132,8 +144,8 @@ body, html {
   }
 
   .login-btn, .submit-btn {
-    padding: 12px 28px;
     font-size: 1rem;
+    padding: 10px 20px;
   }
 
   .note {
