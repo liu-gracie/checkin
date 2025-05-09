@@ -31,11 +31,51 @@
 body, html {
   margin: 0;
   padding: 0;
-  height: 100%;
-  font-family: 'New Kansas', serif; 
-  background-color: transparent; 
-  color: inherit; 
+  height: auto;
+  min-height: 100vh;
+  font-family: 'New Kansas', serif;
+  background-color: transparent;
+  color: inherit;
+  overflow-x: hidden;
 }
+
+.container.fullscreen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  overflow: hidden;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.header-link {
+  font-family: 'Tondu', sans-serif;
+  font-weight: normal;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  color: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.header-link:hover {
+  opacity: 0.5;
+}
+
 
 .container {
   height: 100vh;
@@ -49,6 +89,41 @@ body, html {
 h1, h2, p {
   margin: 0;
   padding: 0;
+}
+
+.about {
+  font-family: 'Tondu', sans-serif;
+    font-family: 'Tondu', sans-serif;
+  font-weight: normal;
+  font-size: 4rem;
+  margin-top: 15vh;
+  color: inherit; 
+}
+
+.subtitle {
+  font-family: 'Tondu', sans-serif;
+  font-weight: normal;
+  font-size: 2rem;
+  margin-top: 40px;
+  color: inherit; 
+}
+
+.text {
+  font-size: 1rem;
+  font-weight: normal;
+  max-width: 600px;
+  margin-top: 20px;
+  text-align: left;
+  color: inherit; 
+}
+
+.about-video {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 100px;
 }
 
 .title {
@@ -123,6 +198,41 @@ button:hover {
   padding: 5px 10px;
 }
 
+.confirmation-box {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirmation-text {
+  font-size: 1rem;
+  opacity: 0.5;
+  color: inherit;
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: 20px;
+}
+
+.icon-btn {
+  margin-top: 40px;
+  font-size: 2rem;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.icon-btn:hover {
+  opacity: 0.5;
+}
+
+
 /* Responsive */
 @media (max-width: 600px) {
   .title {
@@ -146,4 +256,9 @@ button:hover {
   .note {
     font-size: 0.9rem;
   }
+
+  .text {
+    font-size: 0.9rem;
+  }
 }
+

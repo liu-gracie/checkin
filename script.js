@@ -40,7 +40,6 @@ const colorThemes = [
 // const selectedPhrase = phrases[randomIndex];
 // const selectedColors = colorThemes[randomIndex];
 
-
 const navType = performance.getEntriesByType("navigation")[0].type;
 const isFirstLoad = sessionStorage.getItem("phraseIndex") === null || navType === "reload";
 
@@ -60,6 +59,39 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnEl = document.querySelector(".login-btn") || document.querySelector(".submit-btn");
   const noteEl = document.querySelector(".note");
   const textAreaEl = document.querySelector(".text-area");
+  const headerLinks = document.querySelectorAll(".header-link");
+  const submitBtn = document.querySelector(".submit-btn");
+  const inputBox = document.querySelector(".input-box");
+  const confirmationBox = document.getElementById("response-confirmation");
+  const aboutTitle = document.querySelector(".about");
+  const subtitles = document.querySelectorAll(".subtitle");
+  const textBlocks = document.querySelectorAll(".text");
+
+  // Apply background color to the whole page
+  document.body.style.backgroundColor = selectedColors.bg;
+  document.documentElement.style.backgroundColor = selectedColors.bg;
+
+  if (aboutTitle) aboutTitle.style.color = selectedColors.text;
+  if (subtitles.length > 0) {
+    subtitles.forEach(sub => sub.style.color = selectedColors.text);
+  }
+  if (textBlocks.length > 0) {
+    textBlocks.forEach(p => p.style.color = selectedColors.text);
+  }
+
+  if (submitBtn && inputBox && confirmationBox) {
+    submitBtn.addEventListener("click", () => {
+      inputBox.style.display = "none";
+      confirmationBox.style.display = "flex";
+
+      // Match icon buttons to theme
+      const iconBtns = confirmationBox.querySelectorAll(".icon-btn");
+      iconBtns.forEach(btn => {
+        btn.style.backgroundColor = selectedColors.text;
+        btn.style.color = selectedColors.bg;
+      });
+    });
+  }
 
   if (container) container.style.backgroundColor = selectedColors.bg;
   if (phraseEl) {
@@ -74,18 +106,23 @@ document.addEventListener("DOMContentLoaded", () => {
   if (noteEl) noteEl.style.color = selectedColors.text;
 
   if (textAreaEl) {
-  textAreaEl.style.borderColor = selectedColors.text;
-  textAreaEl.style.borderWidth = "5px";
-  textAreaEl.style.borderStyle = "solid";
-  textAreaEl.style.color = selectedColors.text;
+    textAreaEl.style.borderColor = selectedColors.text;
+    textAreaEl.style.borderWidth = "4px";
+    textAreaEl.style.borderStyle = "solid";
+    textAreaEl.style.color = selectedColors.text;
 
-  const styleTag = document.createElement("style");
-  styleTag.textContent = `
-    .text-area::placeholder {
-      color: ${selectedColors.text};
-    }
-  `;
-  document.head.appendChild(styleTag);
-}
+    const styleTag = document.createElement("style");
+    styleTag.textContent = `
+      .text-area::placeholder {
+        color: ${selectedColors.text};
+      }
+    `;
+    document.head.appendChild(styleTag);
+  }
 
+  if (headerLinks.length > 0) {
+    headerLinks.forEach(link => {
+      link.style.color = selectedColors.text;
+    });
+  }
 });

@@ -6,14 +6,31 @@
   <link rel="stylesheet" href="styles.css">
   <title>Check In</title>
 </head>
+
+<header class="header">
+  <a href="about.html" class="header-link left">ABOUT</a>
+  <a href="portal.html" class="header-link right">PATIENT PORTAL</a>
+</header>
+
 <body>
-  <div id="container" class="container">
+  <div id="container" class="container fullscreen">
     <h1 class="title">check in</h1>
     <p id="phrase" class="phrase"></p>
+
     <div class="input-box">
       <textarea placeholder="Today, I ..." class="text-area"></textarea>
       <button class="submit-btn">✔</button>
     </div>
+
+    <div id="response-confirmation" class="confirmation-box" style="display: none;">
+      <p class="confirmation-text">response saved</p>
+      <div class="confirmation-actions">
+        <button class="icon-btn" title="Share">📤</button>
+        <button class="icon-btn" title="Calendar">📅</button>
+        <button class="icon-btn" title="Community">👥</button>
+      </div>
+    </div>
+
   </div>
   <script src="script.js"></script>
 </body>
