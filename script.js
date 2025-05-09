@@ -36,7 +36,20 @@ const colorThemes = [
   { bg: "#f3cfe4", text: "#2e4a90", accent: "#8fa2f0" }
 ];
 
-const randomIndex = Math.floor(Math.random() * phrases.length);
+// const randomIndex = Math.floor(Math.random() * phrases.length);
+// const selectedPhrase = phrases[randomIndex];
+// const selectedColors = colorThemes[randomIndex];
+
+
+const navType = performance.getEntriesByType("navigation")[0].type;
+const isFirstLoad = sessionStorage.getItem("phraseIndex") === null || navType === "reload";
+
+if (isFirstLoad) {
+  const index = Math.floor(Math.random() * phrases.length);
+  sessionStorage.setItem("phraseIndex", index);
+}
+
+const randomIndex = parseInt(sessionStorage.getItem("phraseIndex"));
 const selectedPhrase = phrases[randomIndex];
 const selectedColors = colorThemes[randomIndex];
 
@@ -46,10 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const titleEl = document.querySelector(".title");
   const btnEl = document.querySelector(".login-btn") || document.querySelector(".submit-btn");
   const noteEl = document.querySelector(".note");
+  const textAreaEl = document.querySelector(".text-area");
 
   if (container) container.style.backgroundColor = selectedColors.bg;
   if (phraseEl) {
-    phraseEl.innerHTML = selectedPhrase;  // changed from textContent to innerHTML
+    phraseEl.innerHTML = selectedPhrase;
     phraseEl.style.color = selectedColors.text;
   }
   if (titleEl) titleEl.style.color = selectedColors.text;
@@ -58,4 +72,20 @@ document.addEventListener("DOMContentLoaded", () => {
     btnEl.style.color = selectedColors.bg;
   }
   if (noteEl) noteEl.style.color = selectedColors.text;
+
+  if (textAreaEl) {
+  textAreaEl.style.borderColor = selectedColors.text;
+  textAreaEl.style.borderWidth = "5px";
+  textAreaEl.style.borderStyle = "solid";
+  textAreaEl.style.color = selectedColors.text;
+
+  const styleTag = document.createElement("style");
+  styleTag.textContent = `
+    .text-area::placeholder {
+      color: ${selectedColors.text};
+    }
+  `;
+  document.head.appendChild(styleTag);
+}
+
 });
