@@ -66,6 +66,67 @@ document.addEventListener("DOMContentLoaded", () => {
   const aboutTitle = document.querySelector(".about");
   const subtitles = document.querySelectorAll(".subtitle");
   const textBlocks = document.querySelectorAll(".text");
+  const shareBtn = document.querySelector('.icon-btn[title="Share"]');
+  const shareModal = document.getElementById("share-modal");
+  const confirmBtn = document.querySelector(".modal-confirm");
+  const cancelBtn = document.querySelector(".modal-cancel");
+  const calendarBtn = document.querySelector('.icon-btn[title="Calendar"]');
+  const calendarGrid = document.getElementById("calendar-grid");
+  
+
+  // If returning from past.html, simulate submit
+  const params = new URLSearchParams(window.location.search);
+  const fromCalendar = params.get("fromCalendar") === "true";
+
+  if (fromCalendar && inputBox && confirmationBox) {
+    inputBox.style.display = "none";
+    confirmationBox.style.display = "flex";
+
+    const iconBtns = confirmationBox.querySelectorAll(".icon-btn");
+    iconBtns.forEach(btn => {
+      btn.style.backgroundColor = selectedColors.text;
+      btn.style.color = selectedColors.bg;
+    });
+  }
+
+  
+  if (calendarGrid) {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    for (let i = 1; i <= daysInMonth; i++) {
+      const dayDiv = document.createElement("div");
+      dayDiv.className = "calendar-day";
+      dayDiv.textContent = i;
+      dayDiv.style.borderColor = selectedColors.text;
+      dayDiv.style.color = selectedColors.text;
+      calendarGrid.appendChild(dayDiv);
+    }
+  }
+  
+  if (calendarBtn) {
+    calendarBtn.addEventListener("click", () => {
+      window.location.href = "past.html";
+    });
+  }
+
+  if (shareBtn && shareModal && confirmBtn && cancelBtn) {
+    shareBtn.addEventListener("click", () => {
+      shareModal.style.display = "flex";
+    });
+
+    confirmBtn.addEventListener("click", () => {
+      shareModal.style.display = "none";
+      alert("Pretend we're opening Instagram... 🎉"); // Replace with real logic if needed
+    });
+
+    cancelBtn.addEventListener("click", () => {
+      shareModal.style.display = "none";
+    });
+  }
+
 
   // Apply background color to the whole page
   document.body.style.backgroundColor = selectedColors.bg;

@@ -232,6 +232,71 @@ button:hover {
   opacity: 0.5;
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background-color: white;
+  color: black;
+  padding: 30px 40px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 300px;
+  font-size: 1rem;
+  font-family: 'New Kansas', serif;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-confirm, .modal-cancel {
+  font-family: 'New Kansas', serif;
+  padding: 5px 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.modal-confirm:hover, .modal-cancel:hover {
+  opacity: 0.5;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); 
+  gap: 10px;
+  max-width: 600px;
+  margin-top: 40px;
+}
+
+.calendar-day {
+  aspect-ratio: 1 / 1;
+  border: 4px solid currentColor;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 20px;
+}
+
+
 
 /* Responsive */
 @media (max-width: 600px) {
