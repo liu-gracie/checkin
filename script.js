@@ -71,8 +71,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const confirmBtn = document.querySelector(".modal-confirm");
   const cancelBtn = document.querySelector(".modal-cancel");
   const calendarBtn = document.querySelector('.icon-btn[title="Calendar"]');
+  const communityBtn = document.querySelector('.icon-btn[title="Community"]');
   const calendarGrid = document.getElementById("calendar-grid");
+  const noteBoard = document.getElementById("note-board");
   
+
+  if (communityBtn) {
+    communityBtn.addEventListener("click", () => {
+      window.location.href = "board.html";
+    });
+  }
 
   // If returning from past.html, simulate submit
   const params = new URLSearchParams(window.location.search);
@@ -186,4 +194,57 @@ document.addEventListener("DOMContentLoaded", () => {
       link.style.color = selectedColors.text;
     });
   }
+
+
+  if (noteBoard) {
+    const placeholderTexts = [
+      "Lorem ipsum dolor sit amet.",
+      "Consectetur adipiscing elit.",
+      "Sed do eiusmod tempor incididunt.",
+      "Ut labore et dolore magna aliqua.",
+      "Enim ad minim veniam.",
+      "Quis nostrud exercitation ullamco.",
+      "Laboris nisi ut aliquip ex ea.",
+      "Duis aute irure dolor in reprehenderit.",
+      "In voluptate velit esse cillum.",
+      "Excepteur sint occaecat cupidatat non proident."
+    ];
+
+    placeholderTexts.forEach(text => {
+      const note = document.createElement("div");
+      note.className = "note";
+      note.textContent = text;
+
+      // Random start position
+      note.style.top = Math.random() * 60 + "vh";
+      note.style.left = Math.random() * 80 + "vw";
+
+      makeDraggable(note);
+      noteBoard.appendChild(note);
+    });
+  }
+
+  // Helper to make notes draggable
+  function makeDraggable(element) {
+    let offsetX = 0, offsetY = 0, isDragging = false;
+
+    element.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      offsetX = e.clientX - element.offsetLeft;
+      offsetY = e.clientY - element.offsetTop;
+      element.style.cursor = "grabbing";
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      element.style.left = e.clientX - offsetX + "px";
+      element.style.top = e.clientY - offsetY + "px";
+    });
+
+    document.addEventListener("mouseup", () => {
+      isDragging = false;
+      element.style.cursor = "grab";
+    });
+  }
+
 });
