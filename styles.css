@@ -161,7 +161,7 @@ h1, h2, p {
   background-color: transparent;
 }
 
-.note {
+.info {
   font-size: 1rem;
   opacity: 0.5;
   max-width: 400px;
