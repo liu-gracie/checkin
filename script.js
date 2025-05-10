@@ -1,3 +1,6 @@
+// ------------------------------
+// PHRASES AND COLOR THEMES
+// ------------------------------
 const phrases = [
   "happy friday, what are you<br>looking forward to today?",
   "what’s a compliment you want<br>to share to someone today?",
@@ -18,28 +21,27 @@ const phrases = [
 ];
 
 const colorThemes = [
-  { bg: "#2e4a90", text: "#f3cfe4", accent: "#8fa2f0" },
-  { bg: "#964e27", text: "#fff0c1", accent: "#bc7961" },
-  { bg: "#3b7030", text: "#f5d94f", accent: "#6fc96f" }, 
-  { bg: "#f3cfe4", text: "#2e4a90", accent: "#8fa2f0" },
-  { bg: "#2e4a90", text: "#f3cfe4", accent: "#8fa2f0" },
-  { bg: "#964e27", text: "#fff0c1", accent: "#bc7961" },
-  { bg: "#3b7030", text: "#f5d94f", accent: "#6fc96f" }, 
-  { bg: "#f3cfe4", text: "#2e4a90", accent: "#8fa2f0" },
-  { bg: "#2e4a90", text: "#f3cfe4", accent: "#8fa2f0" },
-  { bg: "#964e27", text: "#fff0c1", accent: "#bc7961" },
-  { bg: "#3b7030", text: "#f5d94f", accent: "#6fc96f" }, 
-  { bg: "#f3cfe4", text: "#2e4a90", accent: "#8fa2f0" },
-  { bg: "#2e4a90", text: "#f3cfe4", accent: "#8fa2f0" },
-  { bg: "#964e27", text: "#fff0c1", accent: "#bc7961" },
-  { bg: "#3b7030", text: "#f5d94f", accent: "#6fc96f" }, 
-  { bg: "#f3cfe4", text: "#2e4a90", accent: "#8fa2f0" }
+  { bg: "#2e4a90", text: "#f5d94f", accent: "#8fa2f0" },
+  { bg: "#f3cfe4", text: "#3b7030", accent: "#bc7961" },
+  { bg: "#6fc96f", text: "#2e4a90", accent: "#f3cfe4" }, 
+  { bg: "#964e27", text: "#8fa2f0", accent: "#fff0c1" },
+  { bg: "#3b7030", text: "#f3cfe4", accent: "#f5d94f" },
+  { bg: "#f5d94f", text: "#2e4a90", accent: "#3b7030" },
+  { bg: "#8fa2f0", text: "#964e27", accent: "#f3cfe4" },
+  { bg: "#fff0c1", text: "#3b7030", accent: "#bc7961" },
+  { bg: "#bc7961", text: "#f5d94f", accent: "#2e4a90" },
+  { bg: "#2e4a90", text: "#fff0c1", accent: "#6fc96f" },
+  { bg: "#f3cfe4", text: "#964e27", accent: "#8fa2f0" }, 
+  { bg: "#3b7030", text: "#f5d94f", accent: "#fff0c1" },
+  { bg: "#964e27", text: "#6fc96f", accent: "#f3cfe4" },
+  { bg: "#f5d94f", text: "#2e4a90", accent: "#bc7961" },
+  { bg: "#8fa2f0", text: "#fff0c1", accent: "#3b7030" }, 
+  { bg: "#fff0c1", text: "#2e4a90", accent: "#964e27" }
 ];
 
-// const randomIndex = Math.floor(Math.random() * phrases.length);
-// const selectedPhrase = phrases[randomIndex];
-// const selectedColors = colorThemes[randomIndex];
-
+// ------------------------------
+// DETERMINE PHRASE INDEX ON FIRST LOAD
+// ------------------------------
 const navType = performance.getEntriesByType("navigation")[0].type;
 const isFirstLoad = sessionStorage.getItem("phraseIndex") === null || navType === "reload";
 
@@ -52,12 +54,16 @@ const randomIndex = parseInt(sessionStorage.getItem("phraseIndex"));
 const selectedPhrase = phrases[randomIndex];
 const selectedColors = colorThemes[randomIndex];
 
+// ------------------------------
+// DOM CONTENT LOADED SETUP
+// ------------------------------
 document.addEventListener("DOMContentLoaded", () => {
+  // DOM element references
   const container = document.getElementById("container");
   const phraseEl = document.getElementById("phrase");
   const titleEl = document.querySelector(".title");
   const btnEl = document.querySelector(".login-btn") || document.querySelector(".submit-btn");
-  const noteEl = document.querySelector(".info",);
+  const noteEl = document.querySelector(".info");
   const textAreaEl = document.querySelector(".text-area");
   const headerLinks = document.querySelectorAll(".header-link");
   const submitBtn = document.querySelector(".submit-btn");
@@ -74,15 +80,50 @@ document.addEventListener("DOMContentLoaded", () => {
   const communityBtn = document.querySelector('.icon-btn[title="Community"]');
   const calendarGrid = document.getElementById("calendar-grid");
   const noteBoard = document.getElementById("note-board");
-  
 
+  // BUTTON LOGIC 
+  // if (shareBtn) {
+  //   shareBtn.innerHTML = `<img src="images/share.png" alt="Share" class="icon-img">`;
+  //   shareBtn.style.backgroundColor = selectedColors.text;
+  // }
+  // if (calendarBtn) {
+  //   calendarBtn.innerHTML = `<img src="images/calendar.png" alt="Calendar" class="icon-img">`;
+  //   calendarBtn.style.backgroundColor = selectedColors.text;
+  // }
+  // if (communityBtn) {
+  //   communityBtn.innerHTML = `<img src="images/community.png" alt="Community" class="icon-img">`;
+  //   communityBtn.style.backgroundColor = selectedColors.text;
+  // }
+  // if (submitBtn) {
+  //   submitBtn.innerHTML = `<img src="images/check.png" alt="Submit" class="icon-img">`;
+  //   submitBtn.style.backgroundColor = selectedColors.text;
+  //   submitBtn.style.color = selectedColors.bg;
+  // }
+
+  // // Update icon styles globally
+  // const iconBtns = document.querySelectorAll(".icon-btn");
+  // iconBtns.forEach(btn => {
+  //   btn.style.border = "none";
+  //   btn.style.padding = "0.5em";
+  //   btn.style.borderRadius = "0.5em";
+  //   btn.style.backgroundColor = selectedColors.text;
+  // });
+
+  // const iconImgs = document.querySelectorAll(".icon-img");
+  // iconImgs.forEach(img => {
+  //   img.style.width = "1.2em";
+  //   img.style.height = "1.2em";
+  //   img.style.filter = "brightness(0) invert(0)";
+  // });
+
+  // COMMUNITY BUTTON NAVIGATION
   if (communityBtn) {
     communityBtn.addEventListener("click", () => {
       window.location.href = "board.html";
     });
   }
 
-  // If returning from past.html, simulate submit
+  // CHECK IF COMING BACK FROM CALENDAR
   const params = new URLSearchParams(window.location.search);
   const fromCalendar = params.get("fromCalendar") === "true";
 
@@ -97,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  
+  // RENDER CALENDAR IF PRESENT
   if (calendarGrid) {
     const today = new Date();
     const year = today.getFullYear();
@@ -113,13 +154,15 @@ document.addEventListener("DOMContentLoaded", () => {
       calendarGrid.appendChild(dayDiv);
     }
   }
-  
+
+  // CALENDAR NAVIGATION
   if (calendarBtn) {
     calendarBtn.addEventListener("click", () => {
       window.location.href = "past.html";
     });
   }
 
+  // SHARE MODAL LOGIC
   if (shareBtn && shareModal && confirmBtn && cancelBtn) {
     shareBtn.addEventListener("click", () => {
       shareModal.style.display = "flex";
@@ -127,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     confirmBtn.addEventListener("click", () => {
       shareModal.style.display = "none";
-      alert("Pretend we're opening Instagram... 🎉"); // Replace with real logic if needed
+      alert("Pretend we're opening Instagram... 🎉");
     });
 
     cancelBtn.addEventListener("click", () => {
@@ -135,25 +178,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
-  // Apply background color to the whole page
+  // APPLY SELECTED COLOR THEME
   document.body.style.backgroundColor = selectedColors.bg;
   document.documentElement.style.backgroundColor = selectedColors.bg;
 
   if (aboutTitle) aboutTitle.style.color = selectedColors.text;
-  if (subtitles.length > 0) {
-    subtitles.forEach(sub => sub.style.color = selectedColors.text);
-  }
-  if (textBlocks.length > 0) {
-    textBlocks.forEach(p => p.style.color = selectedColors.text);
-  }
+  subtitles.forEach(sub => sub.style.color = selectedColors.text);
+  textBlocks.forEach(p => p.style.color = selectedColors.text);
 
   if (submitBtn && inputBox && confirmationBox) {
     submitBtn.addEventListener("click", () => {
       inputBox.style.display = "none";
       confirmationBox.style.display = "flex";
 
-      // Match icon buttons to theme
       const iconBtns = confirmationBox.querySelectorAll(".icon-btn");
       iconBtns.forEach(btn => {
         btn.style.backgroundColor = selectedColors.text;
@@ -189,25 +226,18 @@ document.addEventListener("DOMContentLoaded", () => {
     document.head.appendChild(styleTag);
   }
 
-  if (headerLinks.length > 0) {
-    headerLinks.forEach(link => {
-      link.style.color = selectedColors.text;
-    });
-  }
+  headerLinks.forEach(link => {
+    link.style.color = selectedColors.text;
+  });
 
-
+  // CREATE NOTE BOARD IF PRESENT
   if (noteBoard) {
     const placeholderTexts = [
-      "Lorem ipsum dolor sit amet.",
-      "Consectetur adipiscing elit.",
-      "Sed do eiusmod tempor incididunt.",
-      "Ut labore et dolore magna aliqua.",
-      "Enim ad minim veniam.",
-      "Quis nostrud exercitation ullamco.",
-      "Laboris nisi ut aliquip ex ea.",
-      "Duis aute irure dolor in reprehenderit.",
-      "In voluptate velit esse cillum.",
-      "Excepteur sint occaecat cupidatat non proident."
+      "Today I taught my favorite class of juniors and that made me happy :)",
+      "today i found a penny on the street",
+      "Today, I ate lunch with my grandmother.",
+      "today i bought bananas",
+      "Today I slept really well :)",
     ];
 
     placeholderTexts.forEach(text => {
@@ -215,7 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
       note.className = "note";
       note.textContent = text;
 
-      // Random start position
       note.style.top = Math.random() * 60 + "vh";
       note.style.left = Math.random() * 80 + "vw";
 
@@ -224,7 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Helper to make notes draggable
+  // HELPER: MAKE NOTES DRAGGABLE
   function makeDraggable(element) {
     let offsetX = 0, offsetY = 0, isDragging = false;
 
@@ -246,5 +275,4 @@ document.addEventListener("DOMContentLoaded", () => {
       element.style.cursor = "grab";
     });
   }
-
 });
