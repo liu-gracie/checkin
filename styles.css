@@ -328,31 +328,120 @@ button:hover {
 
 
 /* Responsive */
+/* Global fixes for small devices */
+body, html {
+  -webkit-text-size-adjust: 100%; /* Prevents iOS font resizing */
+  scroll-behavior: smooth;
+}
+
+.container, .container.fullscreen {
+  padding: 0 5vw;
+  box-sizing: border-box;
+}
+
+/* Responsive */
 @media (max-width: 600px) {
+
+  .header {
+    flex-direction: column;
+    padding: 10px 20px;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .header-link {
+    font-size: 1.2rem;
+  }
+
   .title {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+    margin-top: 20vh;
+  }
+
+  .about {
+    font-size: clamp(2rem, 10vw, 3rem);
+    margin-top: 10vh;
+  }
+
+  .subtitle {
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+    margin-top: 20px;
   }
 
   .phrase {
-    font-size: 1rem;
-    margin-bottom: 20px;
-  }
-
-  .input-box {
-    width: 300px; 
-  }
-
-  .button, .submit-btn {
-    font-size: 1rem;
-    padding: 8px 14px;
-  }
-
-  .note {
-    font-size: 0.9rem;
+    font-size: clamp(1rem, 4.5vw, 1.2rem);
+    margin: 20px auto;
   }
 
   .text {
+    font-size: 0.95rem;
+    max-width: 90vw;
+    text-align: left;
+  }
+
+  .input-box {
+    width: 100%;
+    max-width: 90vw;
+  }
+
+  .text-area {
+    height: 120px;
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .about-video {
+    max-width: 90vw;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 60px;
+  }
+
+  .info {
     font-size: 0.9rem;
+    max-width: 90vw;
+  }
+
+  .submit-btn {
+    font-size: 1.5rem;
+    padding: 8px 16px;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .calendar-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-width: 90vw;
+  }
+
+  .calendar-day {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+
+  .modal-content {
+    padding: 20px;
+    font-size: 0.9rem;
+    max-width: 80vw;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .note {
+    width: 90px;
+    height: 90px;
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+
+  button, .icon-btn {
+    font-size: 1rem;
+    padding: 10px 20px;
   }
 }
+
 
